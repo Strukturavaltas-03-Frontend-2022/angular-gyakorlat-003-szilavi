@@ -4,10 +4,9 @@ import { User } from '../model/user';
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit {
-
   /**
    * FELADAT!
    * Hozd létre az alábbi Input tulajdonságot.
@@ -15,13 +14,13 @@ export class UserDetailComponent implements OnInit {
    * @default új User
    */
 
+  @Input() user: User = new User();
 
   @Output() delUser: EventEmitter<User> = new EventEmitter();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * FELADAT!
@@ -32,5 +31,7 @@ export class UserDetailComponent implements OnInit {
    * @returns {void}
    */
 
-
+  onDelete(user: User): void {
+    this.delUser.emit(user);
+  }
 }
